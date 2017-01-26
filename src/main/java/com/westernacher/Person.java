@@ -1,22 +1,23 @@
 package com.westernacher;
 
-import javax.xml.bind.annotation.XmlIDREF;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "Person")
+@XmlType(propOrder = {"adresse", "adresseReferenz"})
 public class Person {
-    private Adresse Adresse;
+    @XmlElement(name = "Adresse")
+    private Adresse adresse;
     @XmlIDREF
     @XmlSchemaType(name = "IDREF")
-    private Adresse AdresseReferenz;
+    @XmlElement(name = "AdresseReferenz")
+    private Adresse adresseReferenz;
 
     public Adresse getAdresse() {
-        return Adresse;
+        return adresse;
     }
 
     public void setAdresse(Adresse adresse) {
-        Adresse = adresse;
+        this.adresse = adresse;
     }
 
     public Person withAdresse(Adresse adresse) {
@@ -25,11 +26,11 @@ public class Person {
     }
 
     public Adresse getAdresseReferenz() {
-        return AdresseReferenz;
+        return adresseReferenz;
     }
 
     public void setAdresseReferenz(Adresse adresseReferenz) {
-        AdresseReferenz = adresseReferenz;
+        this.adresseReferenz = adresseReferenz;
     }
 
     public Person withAdresseReferenz(Adresse adresseReferenz) {

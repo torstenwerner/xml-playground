@@ -1,25 +1,25 @@
 package com.westernacher;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "Adresse")
+@XmlType(propOrder = {"id", "ort", "strasseHausnummer"})
 public class Adresse {
     @XmlID
     @XmlSchemaType(name = "ID")
-    private String Id;
-    @XmlElement(required = true)
-    private String Ort;
-    private String StrasseHausnummer;
+    @XmlElement(name = "Id", required = true)
+    private String id;
+    @XmlElement(name = "Ort", required = true)
+    private String ort;
+    @XmlElement(name = "StrasseHausnummer")
+    private String strasseHausnummer;
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public Adresse withId(String id) {
@@ -28,11 +28,11 @@ public class Adresse {
     }
 
     public String getOrt() {
-        return Ort;
+        return ort;
     }
 
     public void setOrt(String ort) {
-        Ort = ort;
+        this.ort = ort;
     }
 
     public Adresse withOrt(String ort) {
@@ -41,11 +41,11 @@ public class Adresse {
     }
 
     public String getStrasseHausnummer() {
-        return StrasseHausnummer;
+        return strasseHausnummer;
     }
 
     public void setStrasseHausnummer(String strasseHausnummer) {
-        StrasseHausnummer = strasseHausnummer;
+        this.strasseHausnummer = strasseHausnummer;
     }
 
     public Adresse withStrasseHausnummer(String strasseHausnummer) {
