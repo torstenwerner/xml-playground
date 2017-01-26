@@ -12,17 +12,22 @@ public class MarshallTest {
     private final Marshaller marshaller;
 
     public MarshallTest() throws JAXBException {
-        final JAXBContext jaxbContext = JAXBContext.newInstance(Adresse.class);
+        final JAXBContext jaxbContext = JAXBContext.newInstance(Person.class);
         marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(JAXB_FORMATTED_OUTPUT, true);
     }
 
     @Test
-    public void marshall() throws Exception {
+    public void marshal() throws Exception {
         final Adresse adresse = new Adresse()
+                .withId("id001")
                 .withOrt("Berlin")
                 .withStrasseHausnummer("Musterstraße 26");
 
-        marshaller.marshal(adresse, System.out);
+        final Person person = new Person()
+                .withAdresse(adresse)
+                .withAdresseReferenz(adresse);
+
+        marshaller.marshal(person, System.out);
     }
 }
